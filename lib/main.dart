@@ -12,7 +12,7 @@ class User {
 }
 
 final ThemeData customTheme = ThemeData(
-  primarySwatch: Colors.amber, // Fundo amarelo
+  primarySwatch: Colors.amber,
   textTheme: TextTheme(
     bodyText1: TextStyle(fontSize: 20.0),
     bodyText2: TextStyle(fontSize: 20.0),
