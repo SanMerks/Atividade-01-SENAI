@@ -11,12 +11,11 @@ class User {
   User({required this.name, required this.email});
 }
 
-
 final ThemeData customTheme = ThemeData(
   primarySwatch: Colors.amber, // Fundo amarelo
   textTheme: TextTheme(
-    bodyText1: TextStyle(fontSize: 20.0), 
-    bodyText2: TextStyle(fontSize: 20.0), 
+    bodyText1: TextStyle(fontSize: 20.0),
+    bodyText2: TextStyle(fontSize: 20.0),
   ),
 );
 
@@ -36,9 +35,9 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Welcome to JobsFlex')),
-      backgroundColor: Colors.amber, 
+      backgroundColor: Colors.amber,
       body: Container(
-        margin: EdgeInsets.all(16.0), 
+        margin: EdgeInsets.all(16.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -47,14 +46,18 @@ class WelcomeScreen extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterScreen()));
                 },
                 child: Text('Registrar'),
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
                 child: Text('Login'),
               ),
@@ -74,7 +77,7 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Registro')),
-      backgroundColor: Colors.amber, 
+      backgroundColor: Colors.amber,
       body: Container(
         margin: EdgeInsets.all(16.0),
         child: Center(
@@ -98,7 +101,8 @@ class RegisterScreen extends StatelessWidget {
 
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DifficultyScreen(user: user)),
+                    MaterialPageRoute(
+                        builder: (context) => DifficultyScreen(user: user)),
                   );
                 },
                 child: Text('Registrar'),
@@ -119,7 +123,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Login')),
-      backgroundColor: Colors.amber, 
+      backgroundColor: Colors.amber,
       body: Container(
         margin: EdgeInsets.all(16.0),
         child: Center(
@@ -143,7 +147,8 @@ class LoginScreen extends StatelessWidget {
 
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DifficultyScreen(user: user)),
+                    MaterialPageRoute(
+                        builder: (context) => DifficultyScreen(user: user)),
                   );
                 },
                 child: Text('Login'),
@@ -165,7 +170,7 @@ class DifficultyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Seleção de Nível de Dificuldade')),
-      backgroundColor: Colors.amber, 
+      backgroundColor: Colors.amber,
       body: Container(
         margin: EdgeInsets.all(16.0),
         child: Center(
@@ -175,7 +180,11 @@ class DifficultyScreen extends StatelessWidget {
               Text('Olá, ${user.name}! Escolha o nível de dificuldade:'),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => WordsAndPhrasesScreen(user: user)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              WordsAndPhrasesScreen(user: user)));
                 },
                 child: Text('Continuar'),
               ),
@@ -197,14 +206,13 @@ class WordsAndPhrasesScreen extends StatelessWidget {
     {'word': 'Hello', 'translation': 'Olá'},
     {'word': 'Goodbye', 'translation': 'Adeus'},
     {'word': 'Friend', 'translation': 'Amigo'},
-    
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Palavras e Frases')),
-      backgroundColor: Colors.amber, 
+      backgroundColor: Colors.amber,
       body: Container(
         margin: EdgeInsets.all(16.0),
         child: Column(
@@ -228,7 +236,10 @@ class WordsAndPhrasesScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ComprehensionTestScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ComprehensionTestScreen()));
               },
               child: Text('Ir para Testes de Compreensão'),
             ),
@@ -251,20 +262,20 @@ class ComprehensionTestScreen extends StatelessWidget {
       'options': ['Adeus', 'Oi', 'Bom dia', 'Amigo'],
       'correctAnswerIndex': 0,
     },
-    
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Testes de Compreensão')),
-      backgroundColor: Colors.amber, 
+      backgroundColor: Colors.amber,
       body: Container(
         margin: EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Oferece pequenos testes para verificar a compreensão do vocabulário aprendido.'),
+            Text(
+                'Oferece pequenos testes para verificar a compreensão do vocabulário aprendido.'),
             SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
@@ -277,14 +288,12 @@ class ComprehensionTestScreen extends StatelessWidget {
                     question: question,
                     options: options,
                     onAnswerSelected: (selectedAnswerIndex) {
-                      
-                      final correctAnswerIndex = comprehensionQuestions[index]['correctAnswerIndex'];
+                      final correctAnswerIndex =
+                          comprehensionQuestions[index]['correctAnswerIndex'];
 
                       if (selectedAnswerIndex == correctAnswerIndex) {
-                        
                         print('Resposta correta!');
                       } else {
-                        
                         print('Resposta incorreta. Tente novamente.');
                       }
                     },
@@ -311,10 +320,12 @@ class ComprehensionQuestionWidget extends StatefulWidget {
   });
 
   @override
-  _ComprehensionQuestionWidgetState createState() => _ComprehensionQuestionWidgetState();
+  _ComprehensionQuestionWidgetState createState() =>
+      _ComprehensionQuestionWidgetState();
 }
 
-class _ComprehensionQuestionWidgetState extends State<ComprehensionQuestionWidget> {
+class _ComprehensionQuestionWidgetState
+    extends State<ComprehensionQuestionWidget> {
   int? selectedAnswerIndex;
 
   @override
@@ -358,18 +369,21 @@ class ProgressAndStatsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Progresso e Estatísticas')),
-      backgroundColor: Colors.amber, 
+      backgroundColor: Colors.amber,
       body: Container(
         margin: EdgeInsets.all(16.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Mostra o progresso do usuário e estatísticas sobre seu desempenho.'),
-             
+              Text(
+                  'Mostra o progresso do usuário e estatísticas sobre seu desempenho.'),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfileScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserProfileScreen()));
                 },
                 child: Text('Ir para Perfil do Usuário'),
               ),
@@ -393,8 +407,8 @@ class UserProfileScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Permite ao usuário visualizar e editar seu perfil, incluindo suas preferências de aprendizado.'),
-              
+              Text(
+                  'Permite ao usuário visualizar e editar seu perfil, incluindo suas preferências de aprendizado.'),
               ElevatedButton(
                 onPressed: () {
                   // Implementar a lógica para voltar à tela inicial ou fechar o aplicativo
